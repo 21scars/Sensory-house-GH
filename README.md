@@ -213,5 +213,5 @@ Use `react-pdf` to render the first 2-3 pages of an eBook as a free preview befo
 | Email | Resend |
 | Cron Jobs | Vercel Cron |
 | Deployment | Vercel |
-#   S e n s o r y - h o u s e - G H  
- 
+
+# Sensory-house-GH
