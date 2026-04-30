@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-dm-sans: 'DM Sans', system-ui, sans-serif;
+  --sensory-purple: #90338f;
+  --sensory-purple-dark: #5e215c;
+  --sensory-yellow: #ffd200;
+  --sensory-green-light: #b5d333;
+  --sensory-green-dark: #76a22b;
+  --sensory-off-white: #f9f7f2;
+  --sensory-gray: #4a4a4a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--sensory-off-white);
+  color: var(--sensory-gray);
+  font-family: var(--font-dm-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Grain overlay for texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.2;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--sensory-off-white); }
+::-webkit-scrollbar-thumb { background: var(--sensory-purple); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--sensory-purple-dark); }
+
+/* Selection */
+::selection { background: var(--sensory-purple); color: white; }
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-sensory-purple text-white font-body font-semibold text-sm rounded-md hover:bg-sensory-purple-dark transition-all duration-200 tracking-wide uppercase;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-sensory-yellow text-sensory-gray font-body font-semibold text-sm rounded-md hover:opacity-90 transition-all duration-200 tracking-wide uppercase;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-6 py-3 border border-sensory-purple/40 text-sensory-purple font-body font-medium text-sm rounded-md hover:bg-sensory-purple/10 hover:border-sensory-purple transition-all duration-200 tracking-wide uppercase;
+  }
+  .card-light {
+    @apply bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+  .input-light {
+    @apply w-full bg-white border border-gray-300 rounded-md px-4 py-3 text-sensory-gray font-body text-sm placeholder:text-gray-400 focus:outline-none focus:border-sensory-purple transition-colors;
+  }
+  .section-label {
+    @apply text-sensory-purple font-body text-xs uppercase tracking-[0.2em] font-bold;
+  }
+  .display-heading {
+    @apply font-display font-bold text-sensory-purple-dark leading-tight;
+  }
+}
